@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "jest": true,
+    "node": true
+  },
+  "plugins": ["node"],
+  "rules": {
+    "node/no-unsupported-features/es-syntax": [
+      "error",
+      { "ignores": ["modules"] }
+    ]
+  },
+  "extends": ["react-app", "react-app/jest"]
 }
