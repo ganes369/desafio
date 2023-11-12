@@ -6,11 +6,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Products, ProductsCard } from "@/app/@types/product";
 //import "./globals.css";
 
-const montserrat = Montserrat({
-  weight: "400",
-  subsets: ["latin"],
-});
-
 const Container = styled.div`
   width: 218px;
   height: 320px;
@@ -79,6 +74,10 @@ interface CardProps {
     updatedAt: Date;
   };
 }
+const montserrat = Montserrat({
+  weight: "400",
+  subsets: ["latin"],
+});
 const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <>

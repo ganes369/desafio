@@ -6,11 +6,11 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import PostList from "./store/page";
 import { fetchPosts } from "./services/listProducts";
 
-function App({ Component, pageProps }: AppProps) {
+function App() {
   const [queryClient] = React.useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
-      <PostList {...pageProps} fetchPosts={fetchPosts} />
+      <PostList />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

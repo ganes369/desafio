@@ -1,7 +1,8 @@
 import axios from "axios";
+import { Products } from "../@types/product";
 
 export const fetchPosts = async (): Promise<{
-  products: any[];
+  products: Products[];
   count: number;
 }> => {
   const { data } = await axios.get<{ products: any[]; count: number }>(

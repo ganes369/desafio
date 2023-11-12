@@ -6,10 +6,10 @@ import React, { useState } from "react";
 import Sidebar from "../SideBar";
 import Ranger from "../Range";
 
-const montserrat = Montserrat({
-  weight: "400",
-  subsets: ["latin"],
-});
+const Image = styled.img`
+  width: 46px;
+  height: 57px;
+`;
 
 const Nav = styled.div`
   background-color: #0f52ba;
@@ -82,6 +82,10 @@ const Li = styled.li`
   justify-content: space-around;
 `;
 
+const montserrat = Montserrat({
+  weight: "400",
+  subsets: ["latin"],
+});
 const NavBar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -103,11 +107,12 @@ const NavBar = () => {
         {/* Conteúdo do menu lateral aqui */}
         <Ul>
           <Li>
-            <img
-              width={"46px"}
-              height={"57px"}
-              src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp"
-            ></img>
+            <Image
+              src={
+                "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp"
+              }
+              alt={""}
+            ></Image>
             <p style={{ width: "80px", fontSize: "12px" }}>
               Apple Watch Series 4 GPS
             </p>
@@ -128,11 +133,12 @@ const NavBar = () => {
             ></Icon>
           </Li>
           <Li>
-            <img
-              width={"46px"}
-              height={"57px"}
-              src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp"
-            ></img>
+            <Image
+              src={
+                "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp"
+              }
+              alt={""}
+            ></Image>
             <p style={{ width: "80px", fontSize: "12px" }}>
               Apple Watch Series 4 GPS
             </p>
