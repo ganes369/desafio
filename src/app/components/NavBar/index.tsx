@@ -145,7 +145,7 @@ const NavBar = () => {
               <Ranger></Ranger>
               <p>R${elemento.price}</p>
               <Icon
-                onClick={() => handleExcluirElemento(index)}
+                // onClick={() => handleExcluirElemento(index)}
                 style={{
                   position: "relative",
                   top: "-50%",
