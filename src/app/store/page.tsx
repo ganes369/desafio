@@ -6,6 +6,10 @@ import styled from "styled-components";
 import { fetchPosts } from "../services/listProducts";
 
 const PostList = () => {
+  const { data, isLoading, isError } = useQuery<{
+    products: any[];
+    count: number;
+  }>("posts", fetchPosts);
   const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -22,7 +26,24 @@ const PostList = () => {
     text-align: center;
   `;
 
-  return <GridContainer></GridContainer>;
+  if (isLoading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (isError) {
+    return <div>Ocorreu um erro ao carregar os dados.</div>;
+  }
+
+  return (
+    <GridContainer>
+      {Array.isArray(data?.products) &&
+        data?.products.map((post) => (
+          <GridItem key={post.id}>
+            <Card product={post}></Card>
+          </GridItem>
+        ))}
+    </GridContainer>
+  );
 };
 
 export default PostList;
