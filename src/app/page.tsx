@@ -1,17 +1,15 @@
 "use client";
 import React from "react";
-import type { AppProps } from "next/app";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import PostList from "./store/page";
-import { fetchPosts } from "./services/listProducts";
+import { useQuery, QueryClientProvider, QueryClient } from "react-query";
 
-function App() {
-  const [queryClient] = React.useState(() => new QueryClient());
+import { fetchPosts } from "./services/listProducts";
+import PostList from "./store/page";
+
+function App({ pageProps }: any) {
+  const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <PostList />
-      <ReactQueryDevtools initialIsOpen={false} />
+    <QueryClientProvider client={queryClient} contextSharing={true}>
+      <PostList {...pageProps} fetchPosts={fetchPosts} />
     </QueryClientProvider>
   );
 }

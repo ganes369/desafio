@@ -1,17 +1,10 @@
 "use client";
-// @ts-nocheck
 import React from "react";
 import { useQuery } from "react-query";
 import Card from "../components/Card";
 import styled from "styled-components";
-import { Products } from "../@types/product";
-import { fetchPosts } from "../services/listProducts";
 
-type FetchPostsResponse = {
-  products: any[];
-  count: number;
-};
-const PostList = () => {
+const PostList = ({ fetchPosts }: any) => {
   const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -27,7 +20,7 @@ const PostList = () => {
     padding: 20px;
     text-align: center;
   `;
-  const { data, isLoading, isError } = useQuery<FetchPostsResponse>(
+  const { data, isLoading, isError } = useQuery<{ products: any[] }>(
     "posts",
     fetchPosts
   );

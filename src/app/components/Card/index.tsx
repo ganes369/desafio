@@ -3,7 +3,6 @@
 import styled from "styled-components";
 import { Montserrat } from "next/font/google";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Products, ProductsCard } from "@/app/@types/product";
 //import "./globals.css";
 
 const Container = styled.div`
