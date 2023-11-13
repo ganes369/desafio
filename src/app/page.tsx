@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
-import { useQuery, QueryClientProvider, QueryClient } from "react-query";
-
-import { fetchPosts } from "./services/listProducts";
-import PostList from "./store/page";
+import { QueryClientProvider, QueryClient } from "react-query";
+import PostList from "./store";
 
 function App() {
   const queryClient = new QueryClient();

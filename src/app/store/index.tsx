@@ -3,13 +3,11 @@ import React from "react";
 import { useQuery } from "react-query";
 import Card from "../components/Card";
 import styled from "styled-components";
-import { fetchPosts } from "../services/listProducts";
+import { fetchServerResponse } from "next/dist/client/components/router-reducer/fetch-server-response";
+import { useAllPosts } from "../services/listProducts";
 
 const PostList = () => {
-  const { data, isLoading, isError } = useQuery<{
-    products: any[];
-    count: number;
-  }>("posts", fetchPosts);
+  const { data, isLoading, isError } = useAllPosts();
   const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -36,8 +34,8 @@ const PostList = () => {
 
   return (
     <GridContainer>
-      {Array.isArray(data?.products) &&
-        data?.products.map((post) => (
+      {Array.isArray(data?.data.products) &&
+        data?.data.products.map((post) => (
           <GridItem key={post.id}>
             <Card product={post}></Card>
           </GridItem>
