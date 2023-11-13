@@ -8,7 +8,7 @@ const FooterDiv = styled.div`
   height: 34px;
   flex-shrink: 0;
   background: #eee;
-  position: fixed;
+
   bottom: 0;
   color: #000;
   font-size: 12px;
