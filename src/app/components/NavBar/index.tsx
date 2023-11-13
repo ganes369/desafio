@@ -5,6 +5,7 @@ import { Montserrat } from "next/font/google";
 import React, { useState } from "react";
 import Sidebar from "../SideBar";
 import Ranger from "../Range";
+import { Products } from "../../@types/product";
 
 const Image = styled.img`
   width: 46px;
@@ -88,6 +89,36 @@ const montserrat = Montserrat({
 });
 const NavBar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [elementos, setElementos] = useState([
+    {
+      id: 1,
+      name: "Apple Watch Series 4 GPS",
+      brand: "head seat",
+      description: "string",
+      photo:
+        "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp",
+      price: "399",
+    },
+    {
+      id: 1,
+      name: "Apple Watch Series 4 GPS",
+      brand: "string",
+      description: "string",
+      photo:
+        "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp",
+      price: "399",
+    },
+  ]);
+
+  const handleExcluirElemento = (index: number) => {
+    // Cria uma nova lista excluindo o elemento na posição 'index'
+    const novaLista = [
+      ...elementos.slice(0, index),
+      ...elementos.slice(index + 1),
+    ];
+    setElementos(novaLista);
+    console.log(elementos.length);
+  };
 
   const handleSidebarToggle = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -100,65 +131,37 @@ const NavBar = () => {
         </HTitlle>
         <BtnCar onClick={handleSidebarToggle}>
           <StyledShoppingCartIcon icon="typcn:shopping-cart" />
-          <QtdeShoppingCart>2</QtdeShoppingCart>
+          <QtdeShoppingCart>{elementos.length}</QtdeShoppingCart>
         </BtnCar>
       </Nav>
       <Sidebar isOpen={isSidebarOpen} onClose={handleSidebarToggle}>
         {/* Conteúdo do menu lateral aqui */}
-        <Ul>
-          <Li>
-            <Image
-              src={
-                "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp"
-              }
-              alt={""}
-            ></Image>
-            <p style={{ width: "80px", fontSize: "12px" }}>
-              Apple Watch Series 4 GPS
-            </p>
-            <Ranger></Ranger>
-            <p>R$399</p>
-            <Icon
-              style={{
-                position: "relative",
-                top: "-50%",
-                right: "-4%",
-                fontSize: "20px",
-                width: "20px",
-                height: "20px",
-                background: "white",
-                borderRadius: "100%",
-              }}
-              icon={"carbon:close-filled"}
-            ></Icon>
-          </Li>
-          <Li>
-            <Image
-              src={
-                "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperx-cloudrevolver.webp"
-              }
-              alt={""}
-            ></Image>
-            <p style={{ width: "80px", fontSize: "12px" }}>
-              Apple Watch Series 4 GPS
-            </p>
-            <Ranger></Ranger>
-            <p>R$399</p>
-            <Icon
-              style={{
-                position: "relative",
-                top: "-50%",
-                right: "-4%",
-                fontSize: "20px",
-                width: "20px",
-                height: "20px",
-                background: "white",
-                borderRadius: "100%",
-              }}
-              icon={"carbon:close-filled"}
-            ></Icon>
-          </Li>
-        </Ul>
+
+        <ul>
+          {elementos.map((elemento, index) => (
+            <Li key={index}>
+              <Image src={elemento.photo} alt={elemento.description}></Image>
+              <p style={{ width: "80px", fontSize: "12px" }}>{elemento.name}</p>
+              <Ranger></Ranger>
+              <p>R${elemento.price}</p>
+              <Icon
+                onClick={() => handleExcluirElemento(index)}
+                style={{
+                  position: "relative",
+                  top: "-50%",
+                  right: "-4%",
+                  fontSize: "20px",
+                  width: "20px",
+                  height: "20px",
+                  background: "white",
+                  borderRadius: "100%",
+                  cursor: "pointer",
+                }}
+                icon={"carbon:close-filled"}
+              ></Icon>
+            </Li>
+          ))}
+        </ul>
       </Sidebar>
     </>
   );
