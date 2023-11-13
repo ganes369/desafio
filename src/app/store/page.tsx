@@ -3,8 +3,9 @@ import React from "react";
 import { useQuery } from "react-query";
 import Card from "../components/Card";
 import styled from "styled-components";
+import { fetchPosts } from "../services/listProducts";
 
-const PostList = ({ fetchPosts }: any) => {
+const PostList = () => {
   const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -20,28 +21,8 @@ const PostList = ({ fetchPosts }: any) => {
     padding: 20px;
     text-align: center;
   `;
-  const { data, isLoading, isError } = useQuery<{ products: any[] }>(
-    "posts",
-    fetchPosts
-  );
-  if (isLoading) {
-    return <div>Carregando...</div>;
-  }
 
-  if (isError) {
-    return <div>Ocorreu um erro ao carregar os dados.</div>;
-  }
-
-  return (
-    <GridContainer>
-      {Array.isArray(data?.products) &&
-        data?.products.map((post) => (
-          <GridItem key={post.id}>
-            <Card product={post}></Card>
-          </GridItem>
-        ))}
-    </GridContainer>
-  );
+  return <GridContainer></GridContainer>;
 };
 
 export default PostList;
