@@ -16,6 +16,7 @@ const PostList = () => {
     justify-content: center;
     align-self: center;
     margin: 0 auto;
+    margin-bottom: 35px;
   `;
 
   const GridItem = styled.div`

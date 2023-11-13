@@ -21,7 +21,11 @@ export default function RootLayout({ children }: any) {
     <html lang="pt-BR">
       <body
         className={(inter.className, montserrat.className)}
-        style={{ padding: 0, margin: 0 }}
+        style={{
+          padding: 0,
+          margin: 0,
+          height: "100%",
+        }}
       >
         <NavBar />
         {children}

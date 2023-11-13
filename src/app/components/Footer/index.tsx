@@ -8,8 +8,6 @@ const FooterDiv = styled.div`
   height: 34px;
   flex-shrink: 0;
   background: #eee;
-
-  bottom: 0;
   color: #000;
   font-size: 12px;
   font-style: normal;
@@ -17,7 +15,8 @@ const FooterDiv = styled.div`
   line-height: normal;
   margin-top: 5px;
   text-align: center;
-  padding: 10px;
+  position: fixed;
+  bottom: 0px;
 `;
 const montserrat = Montserrat({
   weight: "400",
